@@ -26,8 +26,6 @@ The poster and flowchart for this project are as follows:
 
 ## Project Structure
 
-。。。等待完善。。。
-
 Hardware-Accelerated_System_for_IK_Solution_Based_on_LeRobot/   #项目名称
 ├── notebook
 │   ├── design_1.bit   #比特流文件
@@ -91,7 +89,7 @@ Hardware-Accelerated_System_for_IK_Solution_Based_on_LeRobot/   #项目名称
 ### 快速开始步骤
 
 1. 将手柄和电脑通过蓝牙连接，将电脑和板卡通过千兆网口连接，将板卡与舵机驱动板有线连接
-2. 将该文件夹上传到 PYNQ-Z2 板卡
+2. 将notebook文件夹,driver文件夹，ik文件夹以及hw_solver_wrapper.py上传到 PYNQ-Z2 板卡
 3. 打开 Jupyter Notebook
 4. 运行notebook子文件夹下的ipynb笔记本
 
@@ -104,3 +102,5 @@ Hardware-Accelerated_System_for_IK_Solution_Based_on_LeRobot/   #项目名称
 [1] Wei Liu，PYNQ中文资料，https://github.com/louisliuwei/PynqDocs?tab=readme-ov-file
 [2] Wei Liu，FPGA并行编程，https://github.com/sazczmh/pp4fpgas-cn/tree/master
 [3] AMD,Inc，Vitis 高层次综合用户指南(UG1399)-HLS编程指南，https://docs.amd.com/r/en-US/ug1399-vitis-hls/HLS-Programmers-Guide
+[4] https://github.com/huggingface/lerobot
+[5] https://github.com/box2ai-robotics/joycon-robotics
