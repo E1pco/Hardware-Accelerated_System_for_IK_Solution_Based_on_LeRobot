@@ -10,6 +10,17 @@ Hardware-Accelerated System for Kinematic Inverse Solution Based on LeRobot
 
 本系统是 **2025年FPGA创新与系统设计大赛AMD赛道** 的参赛作品，该作品对初赛阶段所使用的 Cholesky 算子进行了深度集成与应用扩展。
 
+在初赛中，我们的 Cholesky 算子优化效果显著！以下为性能指标对比（详见仓库：[hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)）：
+
+#### Cholesky 算子性能对比
+
+| 性能指标 | 优化前 | 优化后 | 改善幅度 |
+|---------|--------|--------|----------|
+| **延迟 (Latency)** | 4919 | 991 | 79.9% |
+| **执行时间** | 30871 | 4731 | 84.7% |
+| **启动间隔 (II)** | 696 | 124 | 82.2% |
+| **吞吐率 (Throughput)** | 2.3e5 | 1.6e6 | 596% |
+
 **具身智能**是制造业未来发展的重要方向，而**机械臂控制**作为其基础环节，涉及如何驱动机械臂从当前位姿运动至目标位姿。该过程需要通过位姿差值求解各关节舵机应旋转的角度，即**运动学逆解问题**。为此，我们自主设计了运动学逆解 IP 核，部署于 PYNQ-Z2 板卡的 PL 端，充分利用其高度并行计算能力，实现对逆解过程的硬件加速。
 
 ### 🎯 核心特性
@@ -414,6 +425,9 @@ status = solver_ip.read(0xE8)
 
 5. **JoyCon Robotics** - Nintendo Switch JoyCon 机器人控制库  
    GitHub: https://github.com/box2ai-robotics/joycon-robotics
+
+6. **hlstrack2025** - 初赛 Cholesky 算子优化  
+   GitHub: https://github.com/E1pco/hlstrack2025_46387
 
 ---
 

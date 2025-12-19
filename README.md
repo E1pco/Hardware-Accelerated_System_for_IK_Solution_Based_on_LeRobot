@@ -10,6 +10,17 @@
 
 This system is an entry for the **AMD Track of the 2025 FPGA Innovation and System Design Competition**. The project builds upon and extends the Cholesky operator developed during the preliminary competition phase, applying it to real-world robotics applications.
 
+In the preliminary round, our Cholesky operator optimization achieved remarkable results! See the performance comparison below (details in repository: [hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)):
+
+#### Cholesky Operator Performance Comparison
+
+| Performance Metric | Before Optimization | After Optimization | Improvement |
+|-------------------|---------------------|--------------------|--------------|
+| **Latency** | 4919 | 991 | 79.9% |
+| **Execution Time** | 30871 | 4731 | 84.7% |
+| **Initiation Interval (II)** | 696 | 124 | 82.2% |
+| **Throughput** | 2.3e5 | 1.6e6 | 596% |
+
 **Embodied intelligence** represents a crucial direction for the future of manufacturing, with **robotic arm control** as its foundational element. The core challenge lies in driving the robotic arm from its current pose to a target pose, which requires solving for the joint servo rotation angles based on pose differences—known as the **inverse kinematics (IK) problem**.
 
 To address this challenge, we have designed a custom **IK solver IP core** deployed on the programmable logic (PL) of the PYNQ-Z2 board, leveraging its highly parallel computing capabilities to accelerate the IK solving process through hardware acceleration.
@@ -416,6 +427,9 @@ status = solver_ip.read(0xE8)
 
 5. **JoyCon Robotics** - Nintendo Switch JoyCon Robot Control Library  
    GitHub: https://github.com/box2ai-robotics/joycon-robotics
+
+6. **hlstrack2025** - Preliminary Cholesky Operator Optimization  
+   GitHub: https://github.com/E1pco/hlstrack2025_46387
 
 ---
 
