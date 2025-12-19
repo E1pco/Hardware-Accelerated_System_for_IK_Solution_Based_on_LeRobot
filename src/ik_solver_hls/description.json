@@ -1,0 +1,156 @@
+{
+  "name": "xf_solver_lm_so101",
+  "display_name": "SO-101 LM Inverse Kinematics Solver",
+  "description": "Hardware-accelerated Levenberg-Marquardt inverse kinematics solver for SO-101 5-DOF robotic arm using AXI-Lite interface",
+  "vendor": "AMD",
+  "library": "hls",
+  "version": "1.0",
+  "category": "Algorithm",
+  "parameters": [],
+  "ports": [
+    {
+      "name": "sin0",
+      "direction": "input",
+      "type": "float",
+      "description": "Sine of joint 0 angle"
+    },
+    {
+      "name": "sin1",
+      "direction": "input",
+      "type": "float",
+      "description": "Sine of joint 1 angle"
+    },
+    {
+      "name": "sin2",
+      "direction": "input",
+      "type": "float",
+      "description": "Sine of joint 2 angle"
+    },
+    {
+      "name": "sin3",
+      "direction": "input",
+      "type": "float",
+      "description": "Sine of joint 3 angle"
+    },
+    {
+      "name": "sin4",
+      "direction": "input",
+      "type": "float",
+      "description": "Sine of joint 4 angle"
+    },
+    {
+      "name": "cos0",
+      "direction": "input",
+      "type": "float",
+      "description": "Cosine of joint 0 angle"
+    },
+    {
+      "name": "cos1",
+      "direction": "input",
+      "type": "float",
+      "description": "Cosine of joint 1 angle"
+    },
+    {
+      "name": "cos2",
+      "direction": "input",
+      "type": "float",
+      "description": "Cosine of joint 2 angle"
+    },
+    {
+      "name": "cos3",
+      "direction": "input",
+      "type": "float",
+      "description": "Cosine of joint 3 angle"
+    },
+    {
+      "name": "cos4",
+      "direction": "input",
+      "type": "float",
+      "description": "Cosine of joint 4 angle"
+    },
+    {
+      "name": "e0",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 0"
+    },
+    {
+      "name": "e1",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 1"
+    },
+    {
+      "name": "e2",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 2"
+    },
+    {
+      "name": "e3",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 3"
+    },
+    {
+      "name": "e4",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 4"
+    },
+    {
+      "name": "e5",
+      "direction": "input",
+      "type": "float",
+      "description": "Error vector component 5"
+    },
+    {
+      "name": "lambda",
+      "direction": "input",
+      "type": "float",
+      "description": "Levenberg-Marquardt damping factor"
+    },
+    {
+      "name": "d0",
+      "direction": "output",
+      "type": "float",
+      "description": "Joint increment 0"
+    },
+    {
+      "name": "d1",
+      "direction": "output",
+      "type": "float",
+      "description": "Joint increment 1"
+    },
+    {
+      "name": "d2",
+      "direction": "output",
+      "type": "float",
+      "description": "Joint increment 2"
+    },
+    {
+      "name": "d3",
+      "direction": "output",
+      "type": "float",
+      "description": "Joint increment 3"
+    },
+    {
+      "name": "d4",
+      "direction": "output",
+      "type": "float",
+      "description": "Joint increment 4"
+    },
+    {
+      "name": "status",
+      "direction": "output",
+      "type": "int",
+      "description": "Execution status code (0=success, 1=failure)"
+    },
+    {
+      "name": "state",
+      "direction": "output",
+      "type": "int",
+      "description": "Running state (bit flags for core status)"
+    }
+  ]
+}
