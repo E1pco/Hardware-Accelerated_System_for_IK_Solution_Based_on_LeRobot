@@ -15,14 +15,14 @@ Hardware-Accelerated System for Kinematic Inverse Solution Based on LeRobot
 ### 🎯 核心特性
 
 - ✅ **硬件加速**：基于 FPGA 的 Levenberg-Marquardt 逆运动学求解器
-- ✅ **高性能**：单步迭代速度提升约 **37倍**（相比纯软件执行）
+- ✅ **高性能**：单步迭代速度提升约 **10倍**（相比纯软件执行）
 - ✅ **优化策略**：应用 PIPELINE、UNROLL 等 HLS 优化技术
 - ✅ **完整方案**：包含机械臂控制、遥操作、性能测试等完整功能
 - ✅ **易于部署**：基于 PYNQ 框架，Jupyter Notebook 交互式开发
 
 ### 🔬 优化方法
 
-在优化策略上，我们在应用 PIPELINE 与 UNROLL 等基础优化方法的同时，借鉴了先前在 Cholesky 算子硬件加速中积累的优化经验，充分挖掘板卡的运算潜力。经对比测试，优化后的逆解算子运行于 PL 端时，平均每步迭代速度相较于纯软件（全部在 PS 端执行）提升约 **37倍**。
+在优化策略上，我们在应用 PIPELINE 与 UNROLL 等基础优化方法的同时，借鉴了先前在 Cholesky 算子硬件加速中积累的优化经验，充分挖掘板卡的运算潜力。经对比测试，优化后的逆解算子运行于 PL 端时，平均每步迭代速度相较于纯软件（全部在 PS 端执行）提升约 **10倍**。
 
 ### 📊 项目展示
 
@@ -226,7 +226,7 @@ others/hw_solver_wrapper.py  # 硬件求解器封装
 
 | 性能指标 | 纯软件 (PS) | 硬件加速 (PL) | 加速比 |
 |---------|------------|--------------|--------|
-| **单步迭代速度** | 基准 | 提升 | **~37x** |
+| **单步迭代速度** | 基准 | 提升 | **~10x** |
 | **平均迭代次数** | 基准 | 减少 | **~4.7x** |
 | **平均迭代时间** | 基准 | 减少 | **~7.9x** |
 | **吞吐率** | 基准 | 提升 | **~9.2x** |
@@ -245,8 +245,28 @@ others/hw_solver_wrapper.py  # 硬件求解器封装
 ### 性能图表
 
 <div align="center">
-  <img src="notebook/test_results/benchmark_hw_vs_py.png" alt="硬件 vs 软件性能对比" width="70%">
-  <p><em>图3: 硬件加速与软件实现性能对比</em></p>
+  <img src="notebook/test_results/lm_single_step_benchmark.png" alt="单步 LM 基准测试" width="70%">
+  <p><em>图3: 单步 LM 算法性能基准测试</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/lm_scaling_benchmark.png" alt="LM 扩展性基准测试" width="70%">
+  <p><em>图4: LM 算法扩展性能测试</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_solver_comparison.png" alt="IK 求解器对比" width="70%">
+  <p><em>图5: IK 求解器性能对比</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_solver_distribution.png" alt="IK 求解分布" width="70%">
+  <p><em>图6: IK 解分布分析</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_repeat_test.png" alt="IK 重复性测试" width="70%">
+  <p><em>图7: IK 求解器重复性测试结果</em></p>
 </div>
 
 ---

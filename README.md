@@ -17,14 +17,14 @@ To address this challenge, we have designed a custom **IK solver IP core** deplo
 ### 🎯 Key Features
 
 - ✅ **Hardware Acceleration**: FPGA-based Levenberg-Marquardt inverse kinematics solver
-- ✅ **High Performance**: Single-step iteration speed improved by approximately **37×** compared to pure software execution
+- ✅ **High Performance**: Single-step iteration speed improved by approximately **10×** compared to pure software execution
 - ✅ **Optimization Strategies**: Utilizes PIPELINE, UNROLL, and other HLS optimization techniques
 - ✅ **Complete Solution**: Includes robotic arm control, teleoperation, and performance testing
 - ✅ **Easy Deployment**: Based on PYNQ framework with Jupyter Notebook interactive development
 
 ### 🔬 Optimization Methodology
 
-Our optimization strategy combines foundational techniques such as PIPELINE and UNROLL with insights gained from our previous work on Cholesky operator hardware acceleration. Through comparative testing, the optimized IK solver running on the PL achieves an average single-step iteration speed improvement of approximately **37×** compared to pure software execution (entirely on PS).
+Our optimization strategy combines foundational techniques such as PIPELINE and UNROLL with insights gained from our previous work on Cholesky operator hardware acceleration. Through comparative testing, the optimized IK solver running on the PL achieves an average single-step iteration speed improvement of approximately **10×** compared to pure software execution (entirely on PS).
 
 ### 📊 Project Showcase
 
@@ -228,7 +228,7 @@ Comparative testing reveals that compared to pure software implementation (algor
 
 | Performance Metric | Pure Software (PS) | Hardware Accelerated (PL) | Speedup |
 |-------------------|-------------------|---------------------------|---------|
-| **Single-Step Iteration Speed** | Baseline | Improved | **~37×** |
+| **Single-Step Iteration Speed** | Baseline | Improved | **~10×** |
 | **Average Iteration Count** | Baseline | Reduced | **~4.7×** |
 | **Average Iteration Time** | Baseline | Reduced | **~7.9×** |
 | **Throughput** | Baseline | Improved | **~9.2×** |
@@ -247,8 +247,28 @@ All performance data were obtained by running the following notebooks:
 ### Performance Charts
 
 <div align="center">
-  <img src="notebook/test_results/benchmark_hw_vs_py.png" alt="Hardware vs Software Performance Comparison" width="70%">
-  <p><em>Figure 3: Hardware Acceleration vs Software Implementation Performance Comparison</em></p>
+  <img src="notebook/test_results/lm_single_step_benchmark.png" alt="Single-Step LM Benchmark" width="70%">
+  <p><em>Figure 3: Single-Step LM Algorithm Performance Benchmark</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/lm_scaling_benchmark.png" alt="LM Scaling Benchmark" width="70%">
+  <p><em>Figure 4: LM Algorithm Scaling Performance</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_solver_comparison.png" alt="IK Solver Comparison" width="70%">
+  <p><em>Figure 5: IK Solver Performance Comparison</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_solver_distribution.png" alt="IK Solver Distribution" width="70%">
+  <p><em>Figure 6: IK Solution Distribution Analysis</em></p>
+</div>
+
+<div align="center">
+  <img src="notebook/test_results/ik_repeat_test.png" alt="IK Repeatability Test" width="70%">
+  <p><em>Figure 7: IK Solver Repeatability Test Results</em></p>
 </div>
 
 ---
@@ -425,5 +445,4 @@ Special thanks to:
 
 <div align="center">
   <p>⭐ If this project helps you, please give us a star!</p>
-  <p>Made with ❤️ by Hardware-Accelerated IK Team</p>
 </div>
