@@ -10,7 +10,7 @@ Hardware-Accelerated System for Kinematic Inverse Solution Based on LeRobot
 
 本系统是 **2025年FPGA创新与系统设计大赛AMD赛道** 的**全国一等奖参赛**作品，该作品对初赛阶段所使用的 Cholesky 算子进行了深度集成与应用扩展。
 
-在初赛中，我们的 Cholesky 算子优化效果显著！以下为性能指标对比（详见仓库：[hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)）：
+在初赛中，我们的 Cholesky 算子优化效果显著，拿到了Cholesky优化任务的**best**！以下为性能指标对比（详见仓库：[hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)）：
 
 #### Cholesky 算子性能对比
 

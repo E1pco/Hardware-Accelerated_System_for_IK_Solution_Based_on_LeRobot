@@ -10,7 +10,7 @@
 
 This system is an entry that won **the National First Prize** in the **AMD Track of the 2025 FPGA Innovation and System Design Competition**. The project builds upon and extends the Cholesky operator developed during the preliminary competition phase, applying it to real-world robotics applications.
 
-In the preliminary round, our Cholesky operator optimization achieved remarkable results! See the performance comparison below (details in repository: [hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)):
+In the preliminary round, our Cholesky operator optimization achieved remarkable results, securing the **best** in the Cholesky optimization task! See the performance comparison below (details in repository: [hlstrack2025_46387](https://github.com/E1pco/hlstrack2025_46387)):
 
 #### Cholesky Operator Performance Comparison
 
