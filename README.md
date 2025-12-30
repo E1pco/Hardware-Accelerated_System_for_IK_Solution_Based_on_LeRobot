@@ -167,8 +167,8 @@ hw_solver_wrapper       # Top-level wrapper function
 
 If you need to recompile the HLS IP core:
 
-- **Vitis HLS**: 2021.2 or higher
-- **Vivado**: 2021.2 or higher
+- **Vitis HLS**: 2024.2 or higher
+- **Vivado**: 2024.2 or higher
 
 ---
 
@@ -240,10 +240,8 @@ Comparative testing reveals that compared to pure software implementation (algor
 | Performance Metric | Pure Software (PS) | Hardware Accelerated (PL) | Speedup |
 |-------------------|-------------------|---------------------------|---------|
 | **Single-Step Iteration Speed** | Baseline | Improved | **~10×** |
-| **Average Iteration Count** | Baseline | Reduced | **~4.7×** |
 | **Average Iteration Time** | Baseline | Reduced | **~7.9×** |
 | **Throughput** | Baseline | Improved | **~9.2×** |
-| **Average Execution Time** | Baseline | Reduced | **~9.3×** |
 | **Overall Speedup** | 1.0× | Accelerated | **~2.5×** |
 
 > **Note**: Specific performance data may vary depending on test scenarios and target poses. For detailed charts and data, please refer to `notebook/test_results/`.
