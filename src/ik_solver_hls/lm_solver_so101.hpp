@@ -125,7 +125,6 @@ void compute_fk_so101_only(
     // Initial position (base)
     T px = tx1, py = 0.0f, pz = tz1;
     
-    // 旋转矩阵 R (3x3) - 初始为单位阵
     T R[3][3];
     R[0][0] = 1.0f; R[0][1] = 0.0f; R[0][2] = 0.0f;
     R[1][0] = 0.0f; R[1][1] = 1.0f; R[1][2] = 0.0f;
@@ -257,7 +256,6 @@ void compute_fk_so101_only(
         }
     }
     
-    // 输出末端位置和旋转矩阵
     p_end[0] = px;
     p_end[1] = py;
     p_end[2] = pz;
@@ -523,8 +521,6 @@ int lm_solve_step_so101(
     // Call L1 library matrix multiplication: A = J^T * J
     matrixMultiplyTop<Transpose, NoTranspose, MAX_M, N, MAX_M, N, N, N, JtJ_Traits, T, T>(J, J, A);
     
-    // 3. 计算 b = J^T * e (N x 1)
-    // 将 error 扩展为 6x1 矩阵
     T e_mat[MAX_M][1];
     #pragma HLS ARRAY_PARTITION variable=e_mat complete
     for(int i = 0; i < MAX_M; i++) {
@@ -535,13 +531,10 @@ int lm_solve_step_so101(
     T b_mat[N][1];
     #pragma HLS ARRAY_PARTITION variable=b_mat complete
     
-    // 定义 traits 类型：J^T (5x6) * e (6x1) = b (5x1)
     typedef matrixMultiplyTraits<Transpose, NoTranspose, MAX_M, N, MAX_M, 1, T, T> Jte_Traits;
     
-    // 调用 L1 库矩阵乘法：b = J^T * e
     matrixMultiplyTop<Transpose, NoTranspose, MAX_M, N, MAX_M, 1, N, 1, Jte_Traits, T, T>(J, e_mat, b_mat);
     
-    // 提取 b 向量
     T b[N];
     #pragma HLS ARRAY_PARTITION variable=b complete
     for(int i = 0; i < N; i++) {
@@ -549,38 +542,28 @@ int lm_solve_step_so101(
         b[i] = b_mat[i][0];
     }
     
-    // 4. 添加阻尼：A' = A + λI
     add_damping:
     for(int i = 0; i < N; i++) {
         #pragma HLS UNROLL
         A[i][i] += lambda;
     }
     
-    // 5. Cholesky分解并求解
     T L[N][N];
     #pragma HLS ARRAY_PARTITION variable=L dim=0 complete
     
-    // Cholesky分解：A = L * L^T
-    // 使用 choleskyTraits 和 choleskyTop
     typedef choleskyTraits<true, N, T, T> CholeskyConfig;
     int chol_ret = choleskyTop<true, N, CholeskyConfig, T, T>(A, L);
     
     if (chol_ret != 0) {
-        // Cholesky分解失败
         for(int i = 0; i < N; i++) {
             delta[i] = 0.0f;
         }
         return 1;
     }
     
-    // ============================================
-    // 6. 前向替换：L * y = b
-    // 完全展开版本
-    // ============================================
     T y[N];
     #pragma HLS ARRAY_PARTITION variable=y complete
     
-    // 预计算对角线元素的倒数
     T L_diag_inv[N];
     #pragma HLS ARRAY_PARTITION variable=L_diag_inv complete
     compute_diag_inv:
@@ -588,18 +571,12 @@ int lm_solve_step_so101(
         #pragma HLS UNROLL
         L_diag_inv[i] = T(1.0) / L[i][i];
     }
-    
-    // 前向替换展开
     y[0] = b[0] * L_diag_inv[0];
     y[1] = (b[1] - L[1][0]*y[0]) * L_diag_inv[1];
     y[2] = (b[2] - L[2][0]*y[0] - L[2][1]*y[1]) * L_diag_inv[2];
     y[3] = (b[3] - L[3][0]*y[0] - L[3][1]*y[1] - L[3][2]*y[2]) * L_diag_inv[3];
     y[4] = (b[4] - L[4][0]*y[0] - L[4][1]*y[1] - L[4][2]*y[2] - L[4][3]*y[3]) * L_diag_inv[4];
     
-    // ============================================
-    // 7. 后向替换：L^T * delta = y
-    // 完全展开版本
-    // ============================================
     delta[4] = y[4] * L_diag_inv[4];
     delta[3] = (y[3] - L[4][3]*delta[4]) * L_diag_inv[3];
     delta[2] = (y[2] - L[3][2]*delta[3] - L[4][2]*delta[4]) * L_diag_inv[2];
