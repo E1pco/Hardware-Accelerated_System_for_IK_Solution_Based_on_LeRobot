@@ -165,8 +165,8 @@ hw_solver_wrapper       # 顶层封装函数
 
 如果需要重新编译 HLS IP 核：
 
-- **Vitis HLS**: 2021.2 或更高
-- **Vivado**: 2021.2 或更高
+- **Vitis HLS**: 2024.2 或更高
+- **Vivado**: 2024.2 或更高
 
 ---
 
